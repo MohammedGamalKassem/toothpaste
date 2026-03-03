@@ -167,8 +167,26 @@
 \section{Type and Function of the Satellite}
 Our project is a Remote Sensing (RS) training satellite for looking at Earth. We chose this type because Remote Sensing is hard and interesting, offering challenges in Attitude Determination and Control (ADCS) and payload data handling. This makes it a great way for us to learn how real satellites work \cite{argoun2026}. It belongs to the Microsatellite class with dimensions of 30x30x40 cm and a mass between 30 and 50 kg, bypassing the standard CubeSat form factor to provide more flexibility in subsystem design.
 
+Figure~\ref{fig:conops} illustrates the mission concept of operations.
+
+\begin{figure}[htbp]
+    \centering
+    \img[width=0.85\textwidth]{RemoteSensing Mission.png}
+    \caption{Concept of operations for the remote sensing training mission.}
+    \label{fig:conops}
+\end{figure}
+
 \section{Objective of the Project}
 The main goal is training and education for us as students \cite{argoun2026}. It is important to say that we will \textbf{not} launch this satellite; the focus is on the design phase and interface testing. We will build an ``Engineering Model (FlatSat),'' which is a desktop model used to make sure all the electronics and software talk to each other correctly. We have one academic year to finish the design and the prototype model.
+
+An example FlatSat integration layout is shown in Figure~\ref{fig:flatsat}.
+
+\begin{figure}[htbp]
+    \centering
+    \img[width=0.78\textwidth]{FlatSatModel.jpg}
+    \caption{Proposed FlatSat integration layout for subsystem interface verification.}
+    \label{fig:flatsat}
+\end{figure}
 
 \section{Authority and Launch Decision}
 The Aerospace Engineering Department at Cairo University is our technical authority. They gave us the project mandate and the lab space we need to build the FlatSat. The satellite will not be physically launched into space. However, for the sake of rigorous engineering calculations, we will assume a theoretical Low Earth Orbit (LEO) of 670 km to model space environment factors like gravity, eclipse times, and magnetism accurately.
@@ -198,6 +216,15 @@ We are using a ``Bottom-Up'' method to plan our budget \cite{smad3}. Because thi
         \bottomrule
     \end{tabular}
 \end{table}
+
+The estimated cost distribution is shown in Figure~\ref{fig:cost_dist}.
+
+\begin{figure}[htbp]
+    \centering
+    \img[width=0.9\textwidth]{Budget.png}
+    \caption{Estimated cost distribution for the FlatSat prototype.}
+    \label{fig:cost_dist}
+\end{figure}
 
 
 
@@ -367,34 +394,44 @@ This subsystem operates across two different Electromagnetic Spectrum bands allo
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \img[width=\linewidth]{SbandTrans.jpg}
-        \caption{S-band transceiver (TT\&C).}
+        \caption{S-band transceiver.}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.32\textwidth}
         \centering
         \img[width=\linewidth]{S2-Band-FM-01.png}
-        \caption{S-band RF front-end module.}
+        \caption{S-band RF module.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \img[width=\linewidth]{Sband.png}
+        \caption{S-band antenna.}
     \end{subfigure}
 
-    \vspace{0.4cm}
+    \caption{Representative S-band TT\&C components.}
+    \label{fig:sband_components}
+\end{figure}
 
+\begin{figure}[htbp]
+    \centering
     \begin{subfigure}{0.48\textwidth}
         \centering
         \img[width=\linewidth]{XbandTrans.png}
-        \caption{X-band downlink transmitter (payload data).}
+        \caption{X-band downlink transmitter.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
         \img[width=\linewidth]{XbandAntenna.png}
-        \caption{X-band antenna (high-rate downlink).}
+        \caption{X-band antenna.}
     \end{subfigure}
 
-    \caption{Representative Communication Subsystem components for S-band TT\&C and X-band payload downlink.}
-    \label{fig:comms_components}
+    \caption{Representative X-band payload downlink components.}
+    \label{fig:xband_components}
 \end{figure}
 
 
@@ -420,7 +457,7 @@ The workflow is distributed over one academic year and mapped directly to standa
     \label{tab:schedule}
     \renewcommand{\arraystretch}{1.5}
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|p{2.4cm}|p{2.6cm}|p{3.4cm}|p{1.9cm}|p{2.3cm}|p{2.8cm}|}
+    \begin{tabular}{|p{2.4cm}|p{2.6cm}|p{3.3cm}|p{1.9cm}|p{2.9cm}|p{2.2cm}|}
         \hline
         \textbf{Phase} & \textbf{Main Focus} & \textbf{Key Activities} & \textbf{Time Frame} & \textbf{Responsible Team} & \textbf{Outputs} \\ \hline
         Phase 1: Mission Definition & Define mission objectives and constraints & User needs analysis, orbit selection, payload definition & Month 1–2 & All team members & Mission requirements document \\ \hline
@@ -430,7 +467,7 @@ The workflow is distributed over one academic year and mapped directly to standa
         Phase 5: Manufacturing \& Procurement & Prepare hardware & Parts procurement, structure fabrication, payload assembly & Month 10–11 & Manufacturing team & Assembled subsystems \\ \hline
         Phase 6: Integration \& Testing & Verify system functionality & Functional tests, environmental tests, calibration & Month 12–14 & Test engineers & Test and verification \\ \hline
         Phase 7: Launch Preparation & Prepare for deployment & Ground station setup, documentation, launch readiness review & Month 15 & Operations team & Launch readiness \\ \hline
-        Phase 8: Launch \& Commissioning & Deploy and activate satellite & Orbit insertion, subsystem checkout, first images & Month 16 & Operations team & Commissioned satellite \\ \hline
+        Phase 8: Launch \& Commis\-sioning & Deploy and activate satellite & Orbit insertion, subsystem checkout, first images & Month 16 & Operations team & Commis\-sioned satellite \\ \hline
     \end{tabular}
     }
 \end{table}
