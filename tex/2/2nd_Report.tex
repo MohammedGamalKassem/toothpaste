@@ -27,6 +27,7 @@
 % More graphics & floats
 \usepackage{float}
 \usepackage{wrapfig}
+\usepackage{placeins}
 
 % Robust helper for image filenames (supports spaces/parentheses)
 % Images for this report are stored in ../../media/2 relative to this .tex file.
@@ -162,7 +163,30 @@
 \listoffigures
 \clearpage
 \pagenumbering{arabic}
+\chapter*{Students Contributions}
+\addcontentsline{toc}{chapter}{Students, Contributions, and Signatures}
 
+\noindent\textbf{Group size:} 7 students (Training Satellite team, per course guidelines).\\
+
+
+\vspace{0.4cm}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}C{0.05\linewidth}L{0.3\linewidth}L{0.16\linewidth}L{0.42\linewidth}C{0.06\linewidth}@{}}
+\toprule
+\textbf{\#} & \textbf{Name / ID} & \textbf{} & \textbf{Assigned tasks (this report)} & \\
+\midrule
+1 & \textit{Mohammed Gamal Kassem} &  & Desertification(User Requirements), Mass and Power budget, and Organization of the whole report & \\
+2 & \textit{Ahmed Raafat Salah} &  & Development of idea, Mission Statement, Team Formation, and  Dams and Major Structure(User Requirements)& \\
+3 & \textit{Basmala Hatem Mohamed} &  & Monitoring forest fires(User Requirements), Communication Subsystem (A)(Familiarization), and Ground Station  &\\
+4 & \textit{Mariam Amr Mohamed} &  & Maritime Monitoring(User Requirements), Imager Subsystem(Familiarization) &\\
+5 & \textit{Rania Hany Haider} & & Urban Planning(User Requirements), ADCS Subsystem(Familiarization), and Satellite Operation and User Request Implementation & \\
+6 & \textit{Reem Osama Ahmed} &  & Drought(User Requirements), Structure Subsystem(Familiarization), and Orbit Analysis & \\
+7 & \textit{Shrouk Goama Abdelhamed} &  & Water Resource Monitoring(User Requirements), Communication Subsystem (B)(Familiarization), and Critical Technologies  & \\
+8 & \textit{Rawan Mahmoud Sami} & & Agriculture(User Requirements), Power Subsystem(Familiarization), and Time Plan, and Launch &\\
+\bottomrule
+\end{longtable}
+\newpage
 \chapter{Development of Idea}
 \section{Type and Function of the Satellite}
 Our project is a Remote Sensing (RS) training satellite for looking at Earth. We chose this type because Remote Sensing is hard and interesting, offering challenges in Attitude Determination and Control (ADCS) and payload data handling. This makes it a great way for us to learn how real satellites work \cite{argoun2026}. It belongs to the Microsatellite class with dimensions of 30x30x40 cm and a mass between 30 and 50 kg, bypassing the standard CubeSat form factor to provide more flexibility in subsystem design.
@@ -377,13 +401,13 @@ The structure provides the physical framework of the satellite.
     \item The device is a long cylinder directed at the target, allowing object rays to fall on sensitive elements at the focal plane.
     \item The casing contains the electronic system that transforms light falling on the pixels into a continuous signal. This signal moves to a signal processing unit, outputs as the image signal, transfers to a storage device, and is later downloaded to the Ground Receiving Station (GRS).
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[htbp!]
     \centering
-    \img[width=0.6\textwidth]{cylinderical.png}
+    \img[width=0.6\textwidth]{Push.jpg}
     \caption{Conceptual representation of a push-broom imager package (cylindrical optical housing).}
     \label{fig:imager_package}
 \end{figure}
-
+\newpage
 \subsection*{5. Communication Subsystem}
 This subsystem operates across two different Electromagnetic Spectrum bands allocated by the International Telecommunication Union (ITU). 
 \begin{itemize}
@@ -394,19 +418,13 @@ This subsystem operates across two different Electromagnetic Spectrum bands allo
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.36\textwidth}
         \centering
         \img[width=\linewidth]{SbandTrans.jpg}
         \caption{S-band transceiver.}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.32\textwidth}
-        \centering
-        \img[width=\linewidth]{S2-Band-FM-01.png}
-        \caption{S-band RF module.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.32\textwidth}
+    \begin{subfigure}{0.36\textwidth}
         \centering
         \img[width=\linewidth]{Sband.png}
         \caption{S-band antenna.}
@@ -418,13 +436,13 @@ This subsystem operates across two different Electromagnetic Spectrum bands allo
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.36\textwidth}
         \centering
         \img[width=\linewidth]{XbandTrans.png}
         \caption{X-band downlink transmitter.}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.36\textwidth}
         \centering
         \img[width=\linewidth]{XbandAntenna.png}
         \caption{X-band antenna.}
@@ -434,7 +452,7 @@ This subsystem operates across two different Electromagnetic Spectrum bands allo
     \label{fig:xband_components}
 \end{figure}
 
-
+\newpage
 
 
 \section{Team Formation}
@@ -447,7 +465,7 @@ Because a satellite is a highly complex system of systems, the project is divide
 \end{itemize}
 
 Following the formalization of our preliminary design, the Doctor submitted the project proposal to the \textbf{National Authority for Remote Sensing and Space Sciences (NARSS)}, bringing it to the attention of its president, \textbf{Prof. Islam Abo El-Magd}. Recognizing the value of domestic space education, the project framework was subsequently forwarded to the Prime Minister of Egypt, \textbf{Dr. Mostafa Madbouly}, demonstrating the national importance of building local aerospace capabilities through student training initiatives.
-
+\newpage
 \section{Time Plan}
 The workflow is distributed over one academic year and mapped directly to standard space mission life cycle stages (Mission Analysis $\rightarrow$ System Engineering $\rightarrow$ Subsystem Preliminary Design) \cite{smad3}. Table~\ref{tab:schedule} outlines the duration for each stage of the satellite design.
 
@@ -473,7 +491,7 @@ The workflow is distributed over one academic year and mapped directly to standa
 \end{table}
 
 
-
+\newpage
 \section{User Requirements}
 The satellite's payload and operational parameters are driven by the specific needs of various end-users, a fundamental principle of defining mission architecture \cite{smad3}. We have divided the user requirements into seven key applications:
 
@@ -491,9 +509,9 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 
 \subsection{Water Resource Monitoring and Management}
-\begin{figure}[htbp]
+\begin{figure}[htbp!]
     \centering
-    \img[width=0.7\textwidth]{Water.png}
+    \img[width=0.5\textwidth]{Water.png}
     \caption{Example of optical imaging for surface water monitoring and pollution tracking.}
     \label{fig:req_water}
 \end{figure}
@@ -509,11 +527,17 @@ The satellite's payload and operational parameters are driven by the specific ne
     \item \textbf{2. Satellite Capability:} This requires high-resolution optical imaging combined with precise ADCS pointing capabilities to identify physical changes.
     \item \textbf{3. Satellite Needs:} Resolution: 1--5 m; Revisit Time: 7--14 days; Track Width: 50 km \cite{esa_neo, dlr_urban}.
 \end{itemize}
-\newpage
-\subsection{Urban Planning (Roads and Bridges)}
-\begin{figure}[htbp]
+\begin{figure}[htbp!]
     \centering
-    \img[width=0.7\textwidth]{urban planning.png}
+    \img[width=0.5\textwidth]{Dam.png}
+    \caption{Example of very high-resolution imaging for Dams }
+    \label{fig:req_dam}
+\end{figure}
+
+\subsection{Urban Planning (Roads and Bridges)}
+\begin{figure}[htbp!]
+    \centering
+    \img[width=0.5\textwidth]{urban planning.png}
     \caption{Example of very high-resolution imaging for urban mapping and infrastructure planning.}
     \label{fig:req_urban}
 \end{figure}
@@ -523,7 +547,6 @@ The satellite's payload and operational parameters are driven by the specific ne
     \item \textbf{3. Satellite Needs:} Resolution: 0.5--2 m; Revisit Time: 15--30 days; Track Width: 20--50 km \cite{esa_neo, dlr_urban}.
 \end{itemize}
 
-\newpage
 \subsection{Desertification and Plant Cover}
 \begin{figure}[htbp]
     \centering
@@ -556,7 +579,6 @@ The satellite's payload and operational parameters are driven by the specific ne
     \caption{Illustrative wide-area imaging for tracking desertification boundaries and vegetation-line change.}
     \label{fig:req_desert}
 \end{figure}
-
 \begin{itemize}
     \item \textbf{1. Justification:} Remote sensing is vital for tracking the movement of sand dunes and monitoring the shrinking of vegetation lines.
     \item \textbf{2. Satellite Capability:} Requires a wide-swath, moderate-resolution imager to observe large-scale geographical trends.
@@ -591,7 +613,7 @@ The satellite's payload and operational parameters are driven by the specific ne
 \subsection{Coastal Zone Management and Maritime Monitoring}
 \begin{figure}[htbp]
     \centering
-    \img[width=0.7\textwidth]{coastal erosion and marine traffic.png}
+    \img[width=0.6\textwidth]{coastal erosion and marine traffic.png}
     \caption{Example of multispectral imaging for coastal erosion monitoring and maritime traffic observation.}
     \label{fig:req_coastal}
 \end{figure}
@@ -617,7 +639,7 @@ Based on mission analysis protocols, the execution of a user requirement (e.g., 
 \section{Mass Budget and Power Budget}
 The initial budgets have been established by the System Engineer to allocate strict limits for each subsystem group. These values are preliminary and include an explicit, standard industry contingency margin to account for development uncertainties \cite{smad3}.
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Preliminary Mass Budget for $m_\mathrm{max}=\SI{60}{kg}$.}
 \label{tab:mass}
@@ -642,7 +664,7 @@ Harness, thermal, misc. & 5.0 & 1.0 & Cabling, heaters, blankets\\
 \end{tabular*}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Preliminary average power budget by mode.}
 \label{tab:power}
@@ -696,6 +718,7 @@ Rideshare constraints heavily dictate satellite design:
     \item \textbf{Mechanical Interfaces:} The satellite must mate with standard separation rings (e.g., ESPA rings) and fit within strictly enforced payload volume envelopes \cite{smad3}.
     \item \textbf{Environment Survivability:} The satellite structure must withstand severe acoustic shock, random vibrations during ascent, and pyrotechnic shocks upon separation from the launch vehicle \cite{smad3}.
 \end{itemize}
+\FloatBarrier
 \chapter*{Declaration of AI Usage}
 \section*{Visualization}
 To enhance the conceptual understanding of the proposed "FlatSat" architecture and mission operations, the visual figures were generated using AI-assisted visualization tools.
