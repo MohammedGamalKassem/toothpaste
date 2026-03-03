@@ -9,6 +9,7 @@
 
 % Graphics – load ONLY ONCE, no demo mode unless files are really missing
 \usepackage{graphicx}
+\usepackage{caption}
 \usepackage{subcaption}
 
 % Layout and Margins
@@ -26,8 +27,10 @@
 % More graphics & floats
 \usepackage{float}
 \usepackage{wrapfig}
-\usepackage{caption}
-\usepackage{subcaption}
+
+% Robust helper for image filenames (supports spaces/parentheses)
+% Images for this report are stored in ../../media/2 relative to this .tex file.
+\newcommand{\img}[2][]{\includegraphics[#1]{\detokenize{../../media/2/#2}}}
 
 % Tables
 \usepackage{booktabs}
@@ -58,7 +61,7 @@
     citecolor=SatNavy,
     urlcolor=SatGold,
     hypertexnames=false,
-    pdftitle={AER 3510 --- Report 1: Development of Idea & Mission Analysis},
+    pdftitle={AER 3510 --- Report 1: Development of Idea and Mission Analysis},
     pdfauthor={AER 3510 Group},
 }
 
@@ -164,22 +167,8 @@
 \section{Type and Function of the Satellite}
 Our project is a Remote Sensing (RS) training satellite for looking at Earth. We chose this type because Remote Sensing is hard and interesting, offering challenges in Attitude Determination and Control (ADCS) and payload data handling. This makes it a great way for us to learn how real satellites work \cite{argoun2026}. It belongs to the Microsatellite class with dimensions of 30x30x40 cm and a mass between 30 and 50 kg, bypassing the standard CubeSat form factor to provide more flexibility in subsystem design.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{1st_Report/RemoteSensing Mission.png}
-    \caption{Concept of Operations for the Remote Sensing Mission.}
-    \label{fig:conops}
-\end{figure}
-
 \section{Objective of the Project}
 The main goal is training and education for us as students \cite{argoun2026}. It is important to say that we will \textbf{not} launch this satellite; the focus is on the design phase and interface testing. We will build an ``Engineering Model (FlatSat),'' which is a desktop model used to make sure all the electronics and software talk to each other correctly. We have one academic year to finish the design and the prototype model.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{1st_Report/FlatSatModel.jpg}
-    \caption{Proposed FlatSat integration layout for subsystem verification.}
-    \label{fig:flatsat}
-\end{figure}
 
 \section{Authority and Launch Decision}
 The Aerospace Engineering Department at Cairo University is our technical authority. They gave us the project mandate and the lab space we need to build the FlatSat. The satellite will not be physically launched into space. However, for the sake of rigorous engineering calculations, we will assume a theoretical Low Earth Orbit (LEO) of 670 km to model space environment factors like gravity, eclipse times, and magnetism accurately.
@@ -210,12 +199,7 @@ We are using a ``Bottom-Up'' method to plan our budget \cite{smad3}. Because thi
     \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{1st_Report/Budget.png}
-    \caption{Estimated cost distribution.}
-    \label{fig:cost_dist}
-\end{figure}
+
 
 \chapter{Mission Statement}
 ``Upon review of the project proposal submitted by the undergraduate design team, the Department of Aerospace Engineering at Cairo University formally accepts the mission objectives for the Remote Sensing Training Satellite. We recognize the educational value of the proposed 'FlatSat' implementation and hereby authorize the team to proceed immediately with the design and acquisition phases. To support the successful development of this prototype, the Department approves the full financial request and has allocated a total grant of 14,950 EGP. This funding is designated to cover all subsystems and includes a 15\% contingency margin to account for market fluctuations and unforeseen integration costs.''
@@ -230,11 +214,21 @@ The structure provides the physical framework of the satellite.
 \begin{itemize}
     \item \textbf{Configuration \& Components:} There is no particular functional shape required; it can take any form ranging from cylindrical, to a disc, to a ball, or a cube shape \cite{smad3}. It consists of the main chassis, mounting panels for all other subsystems, and mechanisms for deployment.
 \end{itemize}
-\begin{figure}[H!]
+\begin{figure}[htbp]
     \centering
-    \fbox{\includegraphics[width=0.6\textwidth]{example-image-structure.png}}
-    \caption{Typical small satellite structural chassis.}
-    \label{fig:sub_structure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{cube.png}
+        \caption{Cubic (box) configuration.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{cylinderical.png}
+        \caption{Cylindrical configuration.}
+    \end{subfigure}
+    \caption{Representative microsatellite structural form factors.}
+    \label{fig:structure_forms}
 \end{figure}
 
 \subsection*{2. Power Subsystem}
@@ -250,43 +244,38 @@ The structure provides the physical framework of the satellite.
     \item Distribution connections.
 \end{itemize}
 \textbf{Modes of Operation:} Charging the battery, distributing power, and discharging.
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
-    
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/EPS_NanoPower-P60-Featured-1.png}
-        \caption{EPS}
-        \label{fig:sub1}
+        \img[width=\linewidth]{EPS_NanoPower-P60-Featured-1.png}
+        \caption{Electrical power system (EPS) module.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/main_NanoPower-BPX-Featured-Image.png}
-        \caption{Main Battery}
-        \label{fig:sub2}
+        \img[width=\linewidth]{main_NanoPower-BPX-Featured-Image.png}
+        \caption{Main battery pack.}
     \end{subfigure}
-    
-    \vspace{0.4cm}   % vertical space between rows (adjust as needed)
-    
+
+    \vspace{0.4cm}
+
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/primary_lithium_battery_3_6v_14500mah_cylindrical_lithium_battery_cell.png}
-        \caption{Primary Battery}
-        \label{fig:sub3}
+        \img[width=\linewidth]{primary_lithium_battery_3_6v_14500mah_cylindrical_lithium_battery_cell.png}
+        \caption{Primary (startup) battery cell.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/solar_panels.jpg}
-        \caption{Solar Panel}
-        \label{fig:sub4}
+        \img[width=\linewidth]{solar_panels.png}
+        \caption{Solar panel.}
     \end{subfigure}
-    
-    \caption{Overall components for the Power Subsystem}
-    \label{fig:fourpics}
+
+    \caption{Representative components of the Power Subsystem.}
+    \label{fig:power_components}
 \end{figure}
-\newpage
+
 \subsection*{3. Attitude Sensing and Control Subsystem (ADCS)}
 \textbf{Function:} The ADCS is a feedback system responsible for:
 \begin{itemize}
@@ -304,57 +293,56 @@ The structure provides the physical framework of the satellite.
     \item \textbf{Sensors:} Sun sensors (3 total: Coarse for low accuracy, Fine for medium accuracy), Horizon Sensor, Magnetometer, and Star Sensor (highest accuracy).
     \item \textbf{Actuators:} Reaction wheels on the 3 axes (3 active + 1 redundant at 45 degrees). Magnetic torquers (3 total) used for detumbling, disturbance rejection, and de-saturating the reaction wheels.
 \end{itemize}
-\newpage
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
-    
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/hor.png}
-        \caption{Horizon Sensor}
-        \label{fig:sub1}
+        \img[width=\linewidth]{hor.png}
+        \caption{Horizon sensor.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/magnet.png}
-        \caption{Magnetometer}
-        \label{fig:sub2}
+        \img[width=\linewidth]{magnet.png}
+        \caption{Magnetometer.}
     \end{subfigure}
-    
-    \vspace{0.4cm}   % vertical space between rows (adjust as needed)
-    
+
+    \vspace{0.25cm}
+
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/a7a.png}
-        \caption{Star Sensor}
-        \label{fig:sub3}
+        \img[width=\linewidth]{star tracker.png}
+        \caption{Star tracker.}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/sun.png}
-        \caption{Sun sensor}
-        \label{fig:sub4}
+        \img[width=\linewidth]{sun.png}
+        \caption{Sun sensor.}
     \end{subfigure}
-    \vspace{0.4cm}
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/mag tourq.png}
-        \caption{Magnetic Tourq}
-        \label{fig:sub4}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/motor.png}
-        \caption{Reaction Wheel}
-        \label{fig:sub4}
-    \end{subfigure}
-    \caption{Overall components for the ADCS Subsystem}
-    \label{fig:fourpics}
+
+    \caption{Representative ADCS sensors.}
+    \label{fig:adcs_sensors}
 \end{figure}
-\newpage
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{mag tourq.png}
+        \caption{Magnetic torquer.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{motor.png}
+        \caption{Reaction wheel.}
+    \end{subfigure}
+
+    \caption{Representative ADCS actuators.}
+    \label{fig:adcs_actuators}
+\end{figure}
+
 \subsection*{4. Imager Subsystem}
 \textbf{Configuration and Components:} 
 \begin{itemize}
@@ -362,11 +350,11 @@ The structure provides the physical framework of the satellite.
     \item The device is a long cylinder directed at the target, allowing object rays to fall on sensitive elements at the focal plane.
     \item The casing contains the electronic system that transforms light falling on the pixels into a continuous signal. This signal moves to a signal processing unit, outputs as the image signal, transfers to a storage device, and is later downloaded to the Ground Receiving Station (GRS).
 \end{itemize}
-\begin{figure}[H!]
+\begin{figure}[htbp]
     \centering
-    \fbox{\includegraphics[width=0.6\textwidth]{example-image-imager.png}}
-    \caption{Push-broom Imager Subsystem and focal plane electronics.}
-    \label{fig:sub_imager}
+    \img[width=0.6\textwidth]{cylinderical.png}
+    \caption{Conceptual representation of a push-broom imager package (cylindrical optical housing).}
+    \label{fig:imager_package}
 \end{figure}
 
 \subsection*{5. Communication Subsystem}
@@ -377,24 +365,36 @@ This subsystem operates across two different Electromagnetic Spectrum bands allo
 \end{itemize}
 
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/High-speed X-band Downlink Transmitter.png}
-        \caption{X-band}
-        \label{fig:sub1}
+        \img[width=\linewidth]{SbandTrans.jpg}
+        \caption{S-band transceiver (TT\&C).}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/S2-Band-FM-01.png}
-        \caption{S-band}
-        \label{fig:sub2}
+        \img[width=\linewidth]{S2-Band-FM-01.png}
+        \caption{S-band RF front-end module.}
     \end{subfigure}
-    \caption{Communication Subsystem components: S-band transceiver (left) and X-band patch antenna with Image Storage Unit (right).}
-    \label{fig:sub_comms}
+
+    \vspace{0.4cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{XbandTrans.png}
+        \caption{X-band downlink transmitter (payload data).}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \img[width=\linewidth]{XbandAntenna.png}
+        \caption{X-band antenna (high-rate downlink).}
+    \end{subfigure}
+
+    \caption{Representative Communication Subsystem components for S-band TT\&C and X-band payload downlink.}
+    \label{fig:comms_components}
 \end{figure}
 
 
@@ -406,7 +406,7 @@ Because a satellite is a highly complex system of systems, the project is divide
 \begin{itemize}
     \item \textbf{Subsystem Groups:} Dedicated teams are responsible for individual subsystems, including the \textbf{Imager Group}, \textbf{ADCS Group}, \textbf{Power Group}, \textbf{Communication Group}, \textbf{Structure Group}, and the Integration \& Testing Group. Each of these groups is managed by a \textbf{Subsystem Leader}.
     \item \textbf{System Engineering Team:} The Subsystem Leaders report directly to the \textbf{System Engineer}, who is responsible for overall mission trades, mass/power budgets, and ensuring seamless interfaces.
-    \item \textbf{Project Lead / Academic Authority:} The System Engineer operates under the direct supervision of \textbf{Prof. Mohammed Argoun (Father of Sapce in Egypt)}, who serves as the ultimate technical authority and project director. 
+    \item \textbf{Project Lead / Academic Authority:} The System Engineer operates under the direct supervision of \textbf{Prof. Mohammed Argoun (Father of Space in Egypt)}, who serves as the ultimate technical authority and project director. 
 \end{itemize}
 
 Following the formalization of our preliminary design, the Doctor submitted the project proposal to the \textbf{National Authority for Remote Sensing and Space Sciences (NARSS)}, bringing it to the attention of its president, \textbf{Prof. Islam Abo El-Magd}. Recognizing the value of domestic space education, the project framework was subsequently forwarded to the Prime Minister of Egypt, \textbf{Dr. Mostafa Madbouly}, demonstrating the national importance of building local aerospace capabilities through student training initiatives.
@@ -416,8 +416,11 @@ The workflow is distributed over one academic year and mapped directly to standa
 
 \begin{table}[h]
     \centering
+    \caption{Project schedule by mission phase.}
+    \label{tab:schedule}
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{|p{3cm}|p{3cm}|p{4cm}|p{2cm}|p{2.5cm}|p{3cm}|}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{2.4cm}|p{2.6cm}|p{3.4cm}|p{1.9cm}|p{2.3cm}|p{2.8cm}|}
         \hline
         \textbf{Phase} & \textbf{Main Focus} & \textbf{Key Activities} & \textbf{Time Frame} & \textbf{Responsible Team} & \textbf{Outputs} \\ \hline
         Phase 1: Mission Definition & Define mission objectives and constraints & User needs analysis, orbit selection, payload definition & Month 1–2 & All team members & Mission requirements document \\ \hline
@@ -429,23 +432,19 @@ The workflow is distributed over one academic year and mapped directly to standa
         Phase 7: Launch Preparation & Prepare for deployment & Ground station setup, documentation, launch readiness review & Month 15 & Operations team & Launch readiness \\ \hline
         Phase 8: Launch \& Commissioning & Deploy and activate satellite & Orbit insertion, subsystem checkout, first images & Month 16 & Operations team & Commissioned satellite \\ \hline
     \end{tabular}
+    }
 \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.92\linewidth]{ganntchart.jpeg}
-    \caption{Project time plan and Gantt Chart.}
-    \label{fig:gantt}
-\end{figure}
+
 
 \section{User Requirements}
 The satellite's payload and operational parameters are driven by the specific needs of various end-users, a fundamental principle of defining mission architecture \cite{smad3}. We have divided the user requirements into seven key applications:
 
 \subsection{Agriculture}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{2nd_Report images/67d97b0c3cfb1b304f84f756_Strawberries20and20lettuce.png}
-    \caption{Example of multispectral NDVI imaging for crop monitoring.}
+    \img[width=0.7\textwidth]{Agriculture.png}
+    \caption{Example of multispectral imaging for agricultural monitoring (e.g., vegetation health/NDVI products).}
     \label{fig:req_agri}
 \end{figure}
 \begin{itemize}
@@ -455,10 +454,10 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 
 \subsection{Water Resource Monitoring and Management}
-\begin{figure}[H!]
+\begin{figure}[htbp]
     \centering
-    \fbox{\includegraphics[width=0.7\textwidth]{example-image-water.png}}
-    \caption{Example of optical satellite tracking for surface water and pollution.}
+    \img[width=0.7\textwidth]{Water.png}
+    \caption{Example of optical imaging for surface water monitoring and pollution tracking.}
     \label{fig:req_water}
 \end{figure}
 \begin{itemize}
@@ -468,12 +467,6 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 
 \subsection{Dams and Major Ground Structure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{2nd_Report images/Dam.png}
-    \caption{Example of high-resolution structural observation of a dam.}
-    \label{fig:req_dams}
-\end{figure}
 \begin{itemize}
     \item \textbf{1. Justification:} Monitoring the structural integrity of mega-structures like dams is essential for national security to prevent catastrophic flooding.
     \item \textbf{2. Satellite Capability:} This requires high-resolution optical imaging combined with precise ADCS pointing capabilities to identify physical changes.
@@ -481,10 +474,10 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 \newpage
 \subsection{Urban Planning (Roads and Bridges)}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{2nd_Report images/utban.png}
-    \caption{Example of very high-resolution panchromatic imaging for urban mapping.}
+    \img[width=0.7\textwidth]{urban planning.png}
+    \caption{Example of very high-resolution imaging for urban mapping and infrastructure planning.}
     \label{fig:req_urban}
 \end{figure}
 \begin{itemize}
@@ -495,41 +488,36 @@ The satellite's payload and operational parameters are driven by the specific ne
 
 \newpage
 \subsection{Desertification and Plant Cover}
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
-    
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/sa7ra/Gemini_Generated_Image_jx12dyjx12dyjx12 (3).png}
-        \caption{}
-        \label{fig:sub1}
+        \img[width=\linewidth]{Gemini_Generated_Image_jx12dyjx12dyjx12 (3).png}
+        \caption{Example scene (A).}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/sa7ra/Gemini_Generated_Image_jx12dyjx12dyjx12 (2).png}
-        \caption{}
-        \label{fig:sub2}
+        \img[width=\linewidth]{Gemini_Generated_Image_jx12dyjx12dyjx12 (2).png}
+        \caption{Example scene (B).}
     \end{subfigure}
-    
-    \vspace{0.2cm}   % vertical space between rows (adjust as needed)
-    
+
+    \vspace{0.2cm}
+
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/sa7ra/Gemini_Generated_Image_jx12dyjx12dyjx12 (1).png}
-        \caption{}
-        \label{fig:sub3}
+        \img[width=\linewidth]{Gemini_Generated_Image_jx12dyjx12dyjx12 (1).png}
+        \caption{Example scene (C).}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{2nd_Report images/sa7ra/Gemini_Generated_Image_jx12dyjx12dyjx12.png}
-        \caption{}
-        \label{fig:sub4}
+        \img[width=\linewidth]{Gemini_Generated_Image_jx12dyjx12dyjx12.png}
+        \caption{Example scene (D).}
     \end{subfigure}
-    
-    \caption{Example of wide-swath imaging to track desertification boundaries.}
-    \label{fig:fourpics}
+
+    \caption{Illustrative wide-area imaging for tracking desertification boundaries and vegetation-line change.}
+    \label{fig:req_desert}
 \end{figure}
 
 \begin{itemize}
@@ -539,9 +527,9 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 
 \subsection{Drought and Other Natural Disasters}
-\begin{figure}[H!]
+\begin{figure}[htbp]
     \centering
-    \fbox{\includegraphics[width=0.7\textwidth]{example-image-disaster.png}}
+    \img[width=0.7\textwidth]{Flood.png}
     \caption{Example of rapid-revisit imaging for flood or disaster damage assessment.}
     \label{fig:req_disaster}
 \end{figure}
@@ -552,10 +540,10 @@ The satellite's payload and operational parameters are driven by the specific ne
 \end{itemize}
 
 \subsection{Monitoring Forest Fires}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{2nd_Report images/fire.png}
-    \caption{Example of thermal infrared sensing to identify active fire hotspots.}
+    \img[width=0.7\textwidth]{FireForest.png}
+    \caption{Example of remote sensing to identify and monitor active forest fires.}
     \label{fig:req_fire}
 \end{figure}
 \begin{itemize}
@@ -564,10 +552,10 @@ The satellite's payload and operational parameters are driven by the specific ne
     \item \textbf{3. Satellite Needs:} Resolution: 30--100 m; Revisit Time: 12--24 hours; Track Width: 500+ km \cite{smad3}.
 \end{itemize}
 \subsection{Coastal Zone Management and Maritime Monitoring}
-\begin{figure}[H!]
+\begin{figure}[htbp]
     \centering
-    \fbox{\includegraphics[width=0.7\textwidth]{example-image-coastal.png}}
-    \caption{Example of multispectral imaging tracking coastal erosion and maritime traffic.}
+    \img[width=0.7\textwidth]{coastal erosion and marine traffic.png}
+    \caption{Example of multispectral imaging for coastal erosion monitoring and maritime traffic observation.}
     \label{fig:req_coastal}
 \end{figure}
 \begin{itemize}
