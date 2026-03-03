@@ -1,0 +1,26 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Development of Idea}{1}{chapter.4}%
+\contentsline {section}{\numberline {1.1}Type and Function of the Satellite}{1}{section.5}%
+\contentsline {section}{\numberline {1.2}Objective of the Project}{1}{section.7}%
+\contentsline {section}{\numberline {1.3}Authority and Launch Decision}{2}{section.9}%
+\contentsline {section}{\numberline {1.4}Financing and Cost Estimation}{2}{section.10}%
+\contentsline {chapter}{\numberline {2}Mission Statement}{4}{chapter.13}%
+\contentsline {chapter}{\numberline {3}Mission Analysis}{5}{chapter.14}%
+\contentsline {section}{\numberline {3.1}Familiarization}{5}{section.15}%
+\contentsline {section}{\numberline {3.2}Team Formation}{7}{section.19}%
+\contentsline {section}{\numberline {3.3}Time Plan}{8}{section.20}%
+\contentsline {section}{\numberline {3.4}User Requirements}{10}{section.23}%
+\contentsline {subsection}{\numberline {3.4.1}Agriculture}{10}{subsection.24}%
+\contentsline {subsection}{\numberline {3.4.2}Water Resource Monitoring and Management}{10}{subsection.26}%
+\contentsline {subsection}{\numberline {3.4.3}Dams and Major Ground Structure}{11}{subsection.27}%
+\contentsline {subsection}{\numberline {3.4.4}Urban Planning (Roads and Bridges)}{12}{subsection.29}%
+\contentsline {subsection}{\numberline {3.4.5}Desertification and Plant Cover}{13}{subsection.31}%
+\contentsline {subsection}{\numberline {3.4.6}Drought and Other Natural Disasters}{13}{subsection.33}%
+\contentsline {subsection}{\numberline {3.4.7}Monitoring Forest Fires}{13}{subsection.34}%
+\contentsline {subsection}{\numberline {3.4.8}Coastal Zone Management and Maritime Monitoring}{13}{subsection.36}%
+\contentsline {section}{\numberline {3.5}Satellite Operation \& User Request Implementation}{14}{section.37}%
+\contentsline {section}{\numberline {3.6}Mass Budget and Power Budget}{14}{section.46}%
+\contentsline {section}{\numberline {3.7}Orbit Analysis and Ground Track}{15}{section.49}%
+\contentsline {section}{\numberline {3.8}Critical Technologies}{16}{section.50}%
+\contentsline {section}{\numberline {3.9}Ground Station}{16}{section.54}%
+\contentsline {section}{\numberline {3.10}Launch}{16}{section.55}%
